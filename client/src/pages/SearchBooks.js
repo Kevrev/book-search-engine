@@ -12,6 +12,7 @@ import Auth from '../utils/auth';
 import { searchGoogleBooks } from "../utils/API";
 import { saveBookIds, getSavedBookIds } from '../utils/localStorage';
 import { SAVE_BOOK } from '../utils/mutations'
+import { useMutation } from '@apollo/client';
 
 const SearchBooks = () => {
   // create state for holding returned google api data
@@ -28,6 +29,7 @@ const SearchBooks = () => {
     return () => saveBookIds(savedBookIds);
   });
 
+  const [saveBook] = useMutation(SAVE_BOOK);
   // create method to search for books and set state on form submit
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -73,7 +75,7 @@ const SearchBooks = () => {
     }
 
     try {
-      const response = await SAVE_BOOK({ 
+      const response = await saveBook({ 
         variables: { input: bookToSave }
        });
 
