@@ -1,20 +1,24 @@
 {
-  "name": "book-search-engine-main",
+  "name": "googlebooks-app",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server/server.js",
   "scripts": {
-    "start": "react-scripts start",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "cd server && npm start",
+    "start:dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Kevrev/book-search-engine.git"
-  },
+  "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Kevrev/book-search-engine/issues"
+  "dependencies": {
+    "@apollo/react-hooks": "^4.0.0",
+    "if-env": "^1.0.4"
   },
-  "homepage": "https://github.com/Kevrev/book-search-engine#readme"
+  "devDependencies": {
+    "concurrently": "^5.1.0"
+  }
 }
