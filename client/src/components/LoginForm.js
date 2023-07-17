@@ -30,10 +30,6 @@ const LoginForm = () => {
         variables: { userFormData }
       });
 
-      if (!response.ok) {
-        throw new Error('something went wrong!');
-      }
-
       const { token, user } = data.LOGIN_USER;
       console.log(user);
       Auth.login(token);

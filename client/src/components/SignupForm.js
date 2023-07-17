@@ -27,6 +27,8 @@ const SignupForm = () => {
       event.stopPropagation();
     }
 
+    const { username, email, password } = userFormData;
+
     try {
       const { data } = await ADD_USER({
         variables: { username, email, password }
