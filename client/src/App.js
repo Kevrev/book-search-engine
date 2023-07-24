@@ -5,6 +5,7 @@ import SavedBooks from './pages/SavedBooks';
 import Navbar from './components/Navbar';
 import { ApolloProvider, ApolloClient, InMemoryCache } from '@apollo/client';
 
+// establish a connection to the GraphQL server using Apollo Client
 const client = new ApolloClient({
   uri: '/graphql',
   cache: new InMemoryCache(),

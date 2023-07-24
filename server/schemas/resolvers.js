@@ -14,6 +14,7 @@ const resolvers = {
         }
     },
     Mutation: {
+        // *** Seems to be failing somewhere along the pipeline, could be the other parts of the login too or even the server itself 
         login: async (parent_, { email, password }) => {
             const user = await User.findOne({ email })
             if (!user) {
@@ -30,6 +31,7 @@ const resolvers = {
             return { token, user };
         },
 
+        // *** Seems to be failing somewhere along the pipeline, could be the other parts of the login too or even the server itself 
         addUser: async (parent_, { username, email, password }) => { 
             const user = await User.create({ username, email, password });
             const token = signToken(user);
